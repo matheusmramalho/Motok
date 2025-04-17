@@ -20,7 +20,9 @@ public static class ControllersConfiguration
     private static IServiceCollection AddDocumentation(this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
+        //services.AddSwaggerGen(opt => opt.EnableAnnotations());
         services.AddSwaggerGen();
+
         return services;
     }
 
@@ -31,7 +33,10 @@ public static class ControllersConfiguration
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+            });
         }
 
         return app;
@@ -61,58 +66,5 @@ public static class ControllersConfiguration
         //    return;
 
         // Caso não exista adiciona os dados de usuarios
-
-        //var userId = Guid.NewGuid();
-
-        //await contextIdentity.Users.AddAsync(new IdentityUser
-        //{
-        //    Id = userId.ToString(),
-        //    UserName = "teste@teste.com",
-        //    NormalizedUserName = "TESTE@TESTE.COM",
-        //    Email = "teste@teste.com",
-        //    NormalizedEmail = "TESTE@TESTE.COM",
-        //    AccessFailedCount = 0,
-        //    LockoutEnabled = false,
-        //    PasswordHash = "AQAAAAIAAYagAAAAEEdWhqiCwW/jZz0hEM7aNjok7IxniahnxKxxO5zsx2TvWs4ht1FUDnYofR8JKsA5UA==",
-        //    TwoFactorEnabled = false,
-        //    ConcurrencyStamp = Guid.NewGuid().ToString(),
-        //    EmailConfirmed = true,
-        //    SecurityStamp = Guid.NewGuid().ToString()
-        //});
-
-        //await contextIdentity.UserClaims.AddAsync(new IdentityUserClaim<string>
-        //{
-        //    UserId = userId.ToString(),
-        //    ClaimType = "Customers",
-        //    ClaimValue = "Write,Remove"
-        //});
-
-        //await contextIdentity.SaveChangesAsync();
-
-        //if (context.Customers.Any())
-        //    return;
-
-        //var customer = new Customer(
-        //    Guid.NewGuid(),
-        //    "Eduardo Pires",
-        //    "contato@eduardopires.net.br",
-        //    new DateTime(1982, 04, 24));
-
-        //await context.Customers.AddAsync(customer);
-
-        //await context.SaveChangesAsync();
-
-        //var customerEvent = new CustomerRegisteredEvent(customer.Id,
-        //                                                customer.Name,
-        //                                                customer.Email,
-        //                                                customer.BirthDate);
-
-        //var serializedData = JsonConvert.SerializeObject(customerEvent);
-
-        //await contextStore.StoredEvent.AddAsync(new StoredEvent(customerEvent, serializedData, "teste@teste.com"));
-
-        //await contextStore.SaveChangesAsync();
     }
-
-
 }

@@ -2,7 +2,7 @@
 using MatheusR.Motok.Domain.Repositories;
 using MediatR;
 
-namespace MatheusR.Motok.Application.Commands.UpdateLicencePlate;
+namespace MatheusR.Motok.Application.Commands.UpdateMotorcycleLicencePlate;
 public class UpdateLicencePlateCommandHandler : IRequestHandler<UpdateLicencePlateCommand>
 {
     private readonly IMotorcycleRepository _motorcycleRepository;

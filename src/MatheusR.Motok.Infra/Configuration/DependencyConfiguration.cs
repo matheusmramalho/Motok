@@ -1,5 +1,4 @@
-﻿using MatheusR.Motok.CC.Services;
-using MatheusR.Motok.Domain.Repositories;
+﻿using MatheusR.Motok.Domain.Repositories;
 using MatheusR.Motok.Infra.Database;
 using MatheusR.Motok.Infra.Messaging;
 using MatheusR.Motok.Infra.Repositories;
@@ -22,6 +21,8 @@ public static class DependencyConfiguration
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddTransient<IMotorcycleRepository, MotorcycleRepository>();
+        services.AddTransient<IDeliveryRepository, DeliveryRepository>();
+        services.AddTransient<IRentRepository, RentRepository>();
 
         return services;
     }

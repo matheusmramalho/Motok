@@ -18,6 +18,7 @@ public static class UseCasesDependencyInjection
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<IMotorcycleService, MotorcycleService>();
+        services.AddScoped<IImageService, ImageService>();
 
         return services;
     }

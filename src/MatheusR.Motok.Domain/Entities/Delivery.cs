@@ -12,8 +12,7 @@ public class Delivery : Entity
         DateOnly birthDate,
         string licenceNumber,
         LicenteType licenceType,
-        string licenteImagePath,
-        List<Rent> rents)
+        string licenteImagePath = null)
     {
         Name = name;
         Cnpj = cnpj;
@@ -21,7 +20,7 @@ public class Delivery : Entity
         LicenceNumber = licenceNumber;
         LicenceType = licenceType;
         LicenteImagePath = licenteImagePath;
-        Rents = rents;
+        Rents = new List<Rent>();
     }
 
     public string Name { get; private set; }
@@ -29,7 +28,7 @@ public class Delivery : Entity
     public DateOnly BirthDate { get; private set; }
     public string LicenceNumber { get; private set; }
     public LicenteType LicenceType { get; private set; }
-    public string LicenteImagePath { get; private set; }
+    public string? LicenteImagePath { get; private set; }
     public List<Rent> Rents { get; private set; }
 
     public void UpdateImagePath(string imagePath)

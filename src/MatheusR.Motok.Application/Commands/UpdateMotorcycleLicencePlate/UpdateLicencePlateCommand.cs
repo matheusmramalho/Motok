@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace MatheusR.Motok.Application.Commands.UpdateLicencePlate;
+namespace MatheusR.Motok.Application.Commands.UpdateMotorcycleLicencePlate;
 public class UpdateLicencePlateCommand : IRequest
 {
     public UpdateLicencePlateCommand(Guid id, string placa)

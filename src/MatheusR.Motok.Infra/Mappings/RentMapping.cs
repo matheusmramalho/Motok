@@ -14,9 +14,11 @@ public class RentMapping : IEntityTypeConfiguration<Rent>
 
         builder.Property(m => m.InitialDate).IsRequired().HasColumnName("initial_date");
         builder.Property(m => m.FinalDate).IsRequired(false).HasColumnName("final_date");
+        builder.Property(m => m.ExpectedFinalDate).IsRequired().HasColumnName("expected_final_date");
         builder.Property(m => m.ExpectedPrice).IsRequired().HasColumnName("expected_price");
         builder.Property(m => m.FinalPrice).IsRequired(false).HasColumnName("final_price");
         builder.Property(m => m.HasFine).IsRequired(false).HasColumnName("has_fine");
+        builder.Property(m => m.IsRentActive).IsRequired().HasColumnName("is_rent_active");
         builder.Property(m => m.RentPlan).HasColumnName("rent_plan").HasConversion(new EnumToStringConverter<RentPlanType>());
     }
 }

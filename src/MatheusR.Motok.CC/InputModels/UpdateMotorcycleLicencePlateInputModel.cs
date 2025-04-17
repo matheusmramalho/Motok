@@ -1,5 +1,5 @@
 ﻿namespace MatheusR.Motok.CC.InputModels;
-public class UpdateLicencePlateInputModel
+public class UpdateMotorcycleLicencePlateInputModel
 {
     public required string Placa { get; set; }
 }
