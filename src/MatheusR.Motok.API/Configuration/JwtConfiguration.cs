@@ -8,7 +8,7 @@ public static class JwtConfiguration
 {
     public static IServiceCollection AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration)
     {
-        var secretKey = configuration.GetValue<string>("Jwt:Key");
+        var secretKey = configuration["JWT_KEY"] ?? configuration.GetValue<string>("Jwt:Key");
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

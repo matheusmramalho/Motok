@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/MatheusR.Motok.API/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - JWT_KEY=Fe5]$DFgbcTS4)#:knR4QdSaba?!Xzmw
+      - DB_CONNECTION_STRING=Host=db;Port=5432;Database=motokdb;Username=motokuser;Password=sEEqt67c@gRN48oPL
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_USERNAME=rabbituser
+      - RABBITMQ_PASSWORD=secretpassword
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: motokuser
+      POSTGRES_PASSWORD: sEEqt67c@gRN48oPL
+      POSTGRES_DB: motokdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U motokuser -d motokdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbituser
+      RABBITMQ_DEFAULT_PASS: secretpassword
+      RABBITMQ_DEFAULT_VHOST: /
+    ports:
+      - "5672:5672"  # Porta AMQP
+      - "15672:15672"  # Porta de administração
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  postgres_data:

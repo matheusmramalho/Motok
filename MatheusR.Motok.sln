@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatheusR.Motok.Infra", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatheusR.Motok.E2ETests", "tests\MatheusR.Motok.E2ETests\MatheusR.Motok.E2ETests.csproj", "{BF6DDCD8-534D-42CB-9D75-BF744419095E}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F9470276-404C-450F-9F4C-57E604714A64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "orchestration", "orchestration", "{23F7C2F7-C527-4FAD-937F-3A49F4B4681D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{BF6DDCD8-534D-42CB-9D75-BF744419095E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF6DDCD8-534D-42CB-9D75-BF744419095E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF6DDCD8-534D-42CB-9D75-BF744419095E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9470276-404C-450F-9F4C-57E604714A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9470276-404C-450F-9F4C-57E604714A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9470276-404C-450F-9F4C-57E604714A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9470276-404C-450F-9F4C-57E604714A64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +82,6 @@ Global
 		{D7AB3674-037E-44F3-8007-1EAA85A329E7} = {14C3C03D-B38E-4E46-BA01-32A7A1FC36B2}
 		{41CD88EF-ECE8-4772-ACDD-D746C4588A8B} = {14C3C03D-B38E-4E46-BA01-32A7A1FC36B2}
 		{BF6DDCD8-534D-42CB-9D75-BF744419095E} = {133670C0-2FC0-4BE6-9FDC-C3CC41377C66}
+		{F9470276-404C-450F-9F4C-57E604714A64} = {23F7C2F7-C527-4FAD-937F-3A49F4B4681D}
 	EndGlobalSection
 EndGlobal

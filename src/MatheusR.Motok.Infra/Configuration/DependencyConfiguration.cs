@@ -31,7 +31,7 @@ public static class DependencyConfiguration
 
     private static IServiceCollection AddDbConnection(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("PostgreSQL");
+        var connectionString = configuration["DB_CONNECTION_STRING"] ?? configuration.GetConnectionString("PostgreSQL");
         services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
         return services;

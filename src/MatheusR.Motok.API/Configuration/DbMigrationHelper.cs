@@ -21,7 +21,7 @@ public static class DbMigrationHelper
         var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
-        if (env.IsDevelopment())
+        if (env.IsDevelopment() || env.IsEnvironment("Docker"))
         {
             var authService = scope.ServiceProvider.GetRequiredService<IAuthService>();
             var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();

@@ -8,6 +8,7 @@ using MatheusR.Motok.Domain.Repositories;
 using MatheusR.Motok.Domain.OtherTables;
 using Microsoft.Extensions.Logging;
 using MatheusR.Motok.CC.Events;
+using Microsoft.Extensions.Configuration;
 
 namespace MatheusR.Motok.Application.Consumers;
 public class MotorcycleCreatedConsumer : BackgroundService
@@ -18,16 +19,18 @@ public class MotorcycleCreatedConsumer : BackgroundService
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<MotorcycleCreatedConsumer> _logger;
 
-    public MotorcycleCreatedConsumer(IServiceProvider serviceProvider, ILogger<MotorcycleCreatedConsumer> logger)
+    public MotorcycleCreatedConsumer(IServiceProvider serviceProvider, ILogger<MotorcycleCreatedConsumer> logger, IConfiguration configuration)
     {
         _serviceProvider = serviceProvider;
         _logger = logger;
 
         try
         {
-            var factory = new ConnectionFactory
+            var factory = new ConnectionFactory()
             {
-                HostName = "localhost"
+                HostName = configuration["RABBITMQ_HOST"] ?? configuration["RabbitMq:HostName"],
+                UserName = configuration["RABBITMQ_USERNAME"] ?? configuration["RabbitMq:Username"],
+                Password = configuration["RABBITMQ_PASSWORD"] ?? configuration["RabbitMq:Password"]
             };
 
             _logger.LogInformation("Creating RabbitMQ connection...");
