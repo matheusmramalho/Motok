@@ -1,4 +1,6 @@
-﻿using MatheusR.Motok.Domain.Repositories;
+﻿using MatheusR.Motok.CC.Repositories;
+using MatheusR.Motok.CC.Services;
+using MatheusR.Motok.Domain.Repositories;
 using MatheusR.Motok.Infra.Database;
 using MatheusR.Motok.Infra.Messaging;
 using MatheusR.Motok.Infra.Repositories;

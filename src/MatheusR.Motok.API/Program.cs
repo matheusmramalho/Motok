@@ -5,19 +5,25 @@ using MatheusR.Motok.Infra.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-// Controllers
+// Services configuration
 builder.Services
     .AddAndConfigureControllers()
     .AddUseCases()
     .AddInfrastructure(configuration)
+    .AddApplicationRepositories()
+    .AddHttpContextAccessor()
     .AddApplicationServices()
-    .AddMessagingConsumers();
+    .AddMessagingConsumers()
+    .AddJwtConfiguration(configuration);
 
 var app = builder.Build();
+
+// Documentation and migrations
 app.UseDocumentation()
     .UseMigrateDatabase();
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

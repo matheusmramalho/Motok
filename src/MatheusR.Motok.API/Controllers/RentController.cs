@@ -5,12 +5,14 @@ using MatheusR.Motok.Application.Queries.GetRentById;
 using MatheusR.Motok.CC.InputModels;
 using MatheusR.Motok.CC.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MatheusR.Motok.API.Controllers;
 
 [Route("locacao")]
 [ApiController]
+[Authorize(Roles = "DELIVERY")]
 public class RentController : ControllerBase
 {
     private readonly IMediator _mediator;

@@ -4,12 +4,14 @@ using MatheusR.Motok.Application.Commands.UpdateDeliveryLicenceImage;
 using MatheusR.Motok.CC.InputModels;
 using MatheusR.Motok.CC.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MatheusR.Motok.API.Controllers;
 
 [Route("entregadores")]
 [ApiController]
+[Authorize(Roles = "DELIVERY")]
 //[ApiExplorerSettings(GroupName = "entregadores")]
 public class DeliveryController : ControllerBase
 {

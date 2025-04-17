@@ -6,12 +6,14 @@ using MatheusR.Motok.Application.Queries.GetMotorcycles;
 using MatheusR.Motok.CC.InputModels;
 using MatheusR.Motok.CC.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MatheusR.Motok.API.Controllers;
 
 [Route("motos")]
 [ApiController]
+[Authorize(Roles = "ADMIN")]
 //[ApiExplorerSettings(GroupName = "motos")]
 public class MotorcycleController : ControllerBase
 {

@@ -38,6 +38,11 @@ public class ApiGlobalExceptionHandler : IExceptionFilter
             exceptionError.Mensagem = exception.Message;
             statusCode = StatusCodes.Status400BadRequest;
         }
+        else if (exception is MotokUnauthorizedAccessException)
+        {
+            exceptionError.Mensagem = "Incorrect credentials";
+            statusCode = StatusCodes.Status401Unauthorized;
+        }
         else
         {
             exceptionError.Mensagem = "Ocorreu um erro inesperado";
